@@ -27,7 +27,7 @@ void init() {
 
     /*-----------1호선----------*/
 
-    /***
+    /**
      * 부산대 <-> 동래
      */
     Station* BusanDae = (Station*)malloc(sizeof(Station)); // 부산대 구조체
@@ -46,25 +46,25 @@ void init() {
     DongLaeToBusanDae->time = 8;
     DongLae->stationAndLength[0] = DongLaeToBusanDae;
 
-    /***
+    /**
      * 동래 <-> 연산
      */
-    Station* YoungSang = (Station*)malloc(sizeof(Station)); // 연산 구조체
+    Station* YounSang = (Station*)malloc(sizeof(Station)); // 연산 구조체
 
-    StationAndLength* DongLaeToYoungSang = (StationAndLength*)malloc(sizeof(StationAndLength)); //동래 -> 영상
-    StationAndLength* YoungSangToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); //연산 -> 동래
+    StationAndLength* DongLaeToYounSang = (StationAndLength*)malloc(sizeof(StationAndLength)); //동래 -> 영상
+    StationAndLength* YounSangToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); //연산 -> 동래
 
     //동래 -> 연산
-    DongLaeToYoungSang->station = YoungSang;
-    DongLaeToYoungSang->time = 8;
-    DongLae->stationAndLength[1] = DongLaeToYoungSang;
+    DongLaeToYounSang->station = YounSang;
+    DongLaeToYounSang->time = 8;
+    DongLae->stationAndLength[1] = DongLaeToYounSang;
 
     // 연산 -> 동래
-    YoungSangToDongLae->station = DongLae;
-    YoungSangToDongLae->time = 8;
-    YoungSang->stationAndLength[0] = YoungSangToDongLae;
+    YounSangToDongLae->station = DongLae;
+    YounSangToDongLae->time = 8;
+    YounSang->stationAndLength[0] = YounSangToDongLae;
 
-    /***
+    /**
      * 연산 <-> 양정
      */
     Station* YangJeong = (Station*)malloc(sizeof(Station)); //양정 구조체
@@ -75,13 +75,13 @@ void init() {
     //연산 -> 양정
     YounSanToYangJeong->station = YangJeong;
     YounSanToYangJeong->time = 8;
-    YoungSang->stationAndLength[1] = YounSanToYangJeong;
+    YounSang->stationAndLength[1] = YounSanToYangJeong;
 
-    YangJeongToYounSan->station = YoungSang;
+    YangJeongToYounSan->station = YounSang;
     YangJeongToYounSan->time = 8;
     YangJeong->stationAndLength[0] = YangJeongToYounSan;
 
-    /***
+    /**
      * 양정 -> 서면
      */
     Station* SeoMyeon = (Station*)malloc(sizeof(Station)); //서면 구조체
@@ -92,14 +92,14 @@ void init() {
     //양정 -> 서면
     YangJoengToSeoMyeon->station = SeoMyeon;
     YangJoengToSeoMyeon->time = 8;
-    YoungSang->stationAndLength[1] = YounSanToYangJeong;
+    YounSang->stationAndLength[1] = YounSanToYangJeong;
 
     //서면 -> 양정
     SeoMyeonToYangJeong->station = YangJeong;
     SeoMyeonToYangJeong->time = 8;
     SeoMyeon->stationAndLength[0] = SeoMyeonToYangJeong;
 
-    /***
+    /**
      * 서면 <-> 좌천
      */
     Station* JwaCheon = (Station*)malloc(sizeof(Station));
@@ -117,7 +117,7 @@ void init() {
     JwaCheonToSeoMyeon->time = 8;
     JwaCheon->stationAndLength[0] = JwaCheon;
 
-    /***
+    /**
      * 좌천 -> 부산역
      */
     Station* BusanYeog = (Station*)malloc(sizeof(Station)); // 부산역 구조체
@@ -137,7 +137,7 @@ void init() {
     /*-----------4호선----------*/
 
 
-    /***
+    /**
      * 석대 <-> 서동
      */
     Station* SeogDae = (Station*)malloc(sizeof(Station)); // 석대 구조체
@@ -155,7 +155,7 @@ void init() {
     SeoDongToSeogDae->time = 8;
     SeogDae->stationAndLength[0] = SeoDongToSeogDae;
 
-    /***
+    /**
      * 서동 -> 낙민
      */
     Station* Nagmin = (Station*)malloc(sizeof(Station)); // 낙민 구조체
@@ -172,7 +172,7 @@ void init() {
     NagminToSeoDong->time = 8;
     Nagmin->stationAndLength[0] = NagminToSeoDong;
 
-    /***
+    /**
      * 낙민 <-> 동래
      */
     StationAndLength* NagminToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); // 낙민 -> 동래
@@ -188,12 +188,12 @@ void init() {
     DongLaeToNagmin->time = 8;
     DongLae->stationAndLength[2] = DongLaeToNagmin; // 동래가 갈수 있는 곳은 4곳이다.
 
-    /***
+    /**
      * 동래 <-> 미남
      */
     Station* MiNam = (Station*)malloc(sizeof(Station)); // 미남 구조체
 
-    StationAndLength* DongLaeToMiNam = (StationAndLength*)malloc(sizeof(StationAndLength); // 동레 -> 미남
+    StationAndLength* DongLaeToMiNam = (StationAndLength*)malloc(sizeof(StationAndLength)); // 동레 -> 미남
     StationAndLength* MiNamToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); // 미남 -> 동래
 
     //동래 -> 미남
@@ -206,13 +206,12 @@ void init() {
     MiNamToDongLae->time = 4;
     DongLae->stationAndLength[0] = MiNamToDongLae;
 
-    /***
+    /**
      * 덕천 <-> 남산정
      */
     Station* DeogCheon = (Station*)malloc(sizeof(Station)); // 덕천 구조체
     Station* NamsanJeong = (Station*)malloc(sizeof(Station)); // 남산정 구조체
 
-    //덕천 -> 남산정
     StationAndLength* DeogCheonToNamsanJeong = (StationAndLength*)malloc(sizeof(StationAndLength)); // 덕천 -> 남산정
     StationAndLength* NamsanJeongToDeogCheon = (StationAndLength*)malloc(sizeof(StationAndLength)); // 남산정 -> 덕천
 
@@ -225,7 +224,9 @@ void init() {
     NamsanJeongToDeogCheon->time = 4;
     NamsanJeong->stationAndLength[0] = NamsanJeongToDeogCheon;
 
-    // 남산정 <-> 미남
+    /**
+     * 남산정 <-> 미남
+     */
 
     //남산정 -> 미남
     StationAndLength* NamsanJeongToMiNam = (StationAndLength*)malloc(sizeof(StationAndLength)); // 남산정 -> 미남
@@ -240,40 +241,46 @@ void init() {
     MiNamToNamsanJeong->time = 4;
     MiNam->stationAndLength[1] = MiNamToNamsanJeong;
 
-    //미남 <-> 연산
+    /**
+     * 미남 <-> 연산
+     */
 
-    StationAndLength* MiNamToYoungSang = (StationAndLength*)malloc(sizeof(StationAndLength)); // 미남 -> 연산
-    StationAndLength* YoungSangToMiNam = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 미남
+    StationAndLength* MiNamToYounSang = (StationAndLength*)malloc(sizeof(StationAndLength)); // 미남 -> 연산
+    StationAndLength* YoungSanToMiNam = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 미남
 
     //미남 -> 연산
-    MiNamToYoungSang->station = YoungSang;
-    MiNamToYoungSang->time = 4;
-    MiNam->stationAndLength[2] = MiNamToYoungSang;
+    MiNamToYounSang->station = YounSang;
+    MiNamToYounSang->time = 4;
+    MiNam->stationAndLength[2] = MiNamToYounSang;
 
     //연산 -> 미남
-    YoungSangToMiNam->station = MiNam;
-    YoungSangToMiNam->time = 4;
-    YoungSang->stationAndLength[2] = YoungSangToMiNam;
+    YoungSanToMiNam->station = MiNam;
+    YoungSanToMiNam->time = 4;
+    YounSang->stationAndLength[2] = YoungSanToMiNam;
 
-    //연산 <-> 배산
+    /**
+     * 연산 <-> 배산
+     */
 
     Station* BaeSan = (Station*)malloc(sizeof(Station)); // 배산 구조체
 
-    StationAndLength* YoungSangToBaeSan = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 배산
-    StationAndLength* BaeSanToYoungSang = (StationAndLength*)malloc(sizeof(StationAndLength)); // 배산 -> 연산
+    StationAndLength* YounSangToBaeSan = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 배산
+    StationAndLength* BaeSanToYounSang = (StationAndLength*)malloc(sizeof(StationAndLength)); // 배산 -> 연산
 
     //연산 -> 배산
-    YoungSangToBaeSan->station = BaeSan;
-    YoungSangToBaeSan->time = 4;
-    YoungSang->stationAndLength[3] = YoungSangToBaeSan;
+    YounSangToBaeSan->station = BaeSan;
+    YounSangToBaeSan->time = 4;
+    YounSang->stationAndLength[3] = YounSangToBaeSan;
 
     //배산 -> 연산
-    BaeSanToYoungSang->station = YoungSang;
-    BaeSanToYoungSang->time = 4;
-    BaeSan->stationAndLength[0] = BaeSanToYoungSang;
+    BaeSanToYounSang->station = YounSang;
+    BaeSanToYounSang->time = 4;
+    BaeSan->stationAndLength[0] = BaeSanToYounSang;
 
-    //배산 <-> 수영
 
+    /**
+     * 배산 <-> 수영
+     */
     Station* SuYeong = (Station*)malloc(sizeof(Station)); // 수영 구조체
 
     StationAndLength* BaeSanToSuYeong = (StationAndLength*)malloc(sizeof(StationAndLength)); // 배산 -> 수영
@@ -290,24 +297,30 @@ void init() {
     SuYeong->stationAndLength[0] = SuYeongToBaeSan;
 
 
-    //율리 <-> 덕천
-    Station* YulLi = (Station*)malloc(sizeof(Station)); //율리 구조체
+    /*-----------2호선----------*/
 
-    StationAndLength* YulLiToDeogCheon = (StationAndLength*)malloc(sizeof(StationAndLength)); //율리 -> 덕천
-    StationAndLength* DeogCheonToYulLi = (StationAndLength*)malloc(sizeof(StationAndLength)); //덕천 -> 율리
+
+    /**
+     * 율리 <-> 덕천
+     */
+    Station* YulRi = (Station*)malloc(sizeof(Station)); //율리 구조체
+
+    StationAndLength* YulRiToDeogCheon = (StationAndLength*)malloc(sizeof(StationAndLength)); //율리 -> 덕천
+    StationAndLength* DeogCheonToYulRi = (StationAndLength*)malloc(sizeof(StationAndLength)); //덕천 -> 율리
 
     //율리 -> 덕천
-    YulLiToDeogCheon -> station = DeogCheon;
-    YulLiToDeogCheon -> time = 8;
-    YulLi -> stationAndLength[0] = YulLiToDeogCheon;
+    YulRiToDeogCheon -> station = DeogCheon;
+    YulRiToDeogCheon -> time = 8;
+    YulRi -> stationAndLength[0] = YulRiToDeogCheon;
 
     //덕천 -> 율리
-    DeogCheonToYulLi -> station = YulLi;
-    DeogCheonToYulLi -> time = 8;
-    DeogCheon -> stationAndLength[1] = DeogCheonToYulLi;
+    DeogCheonToYulRi -> station = YulRi;
+    DeogCheonToYulRi -> time = 8;
+    DeogCheon -> stationAndLength[1] = DeogCheonToYulRi;
 
-    //덕천 <-> 모라
-
+    /**
+     * 덕천 <-> 모라
+     */
     Station* MoRa = (Station*)malloc(sizeof(Station)); //모라 구조체
 
     StationAndLength* DeogCheonToMoRa = (StationAndLength*)malloc(sizeof(StationAndLength)); //덕천 -> 모라
@@ -323,8 +336,10 @@ void init() {
     MoRaToDeogCheon -> time = 8;
     MoRa -> stationAndLength[0] = MoRaToDeogCheon;
 
-    //모라 <-> 사상
 
+    /**
+     * 모라 <-> 사상
+     */
     Station* SaSang = (Station*)malloc(sizeof(Station)); // 사상 구조체
     StationAndLength* MoRaToSaSang = (StationAndLength*)malloc(sizeof(StationAndLength)); //모라 -> 사상
     StationAndLength* SaSangToMoRa = (StationAndLength*)malloc(sizeof(StationAndLength)); //사상 -> 모라
@@ -340,8 +355,10 @@ void init() {
     SaSangToMoRa -> time = 8;
     SaSang -> stationAndLength[0] = SaSangToMoRa;
 
-    //사상 <-> 냉정
 
+    /**
+     * 사상 <-> 냉정
+     */
     Station* NaengJeong = (Station*)malloc(sizeof(Station)); //냉정 구조체
 
     StationAndLength* SaSangToNaengJeong = (StationAndLength*)malloc(sizeof(StationAndLength)); //사상 -> 냉정
@@ -358,12 +375,13 @@ void init() {
     NaengJeongToSaSang-> time = 8;
     NaengJeong-> stationAndLength[0] = NaengJeongToSaSang;
 
-    //냉정 <-> 가야
-
+    /**
+     * 냉정 <-> 가야
+     */
     Station* GaYa = (Station*)malloc(sizeof(Station)); //냉정 구조체
 
     StationAndLength* GaYaToNaengJeong = (StationAndLength*)malloc(sizeof(StationAndLength)); //가야 -> 냉정
-    StationAndLength NaengJeongToGaYa = (StationAndLength*)malloc(sizeof(StationAndLength)); //냉정 -> 가야
+    StationAndLength* NaengJeongToGaYa = (StationAndLength*)malloc(sizeof(StationAndLength)); //냉정 -> 가야
 
 
     //냉정 -> 가야
@@ -377,7 +395,9 @@ void init() {
     GaYa -> stationAndLength[0] = GaYaToNaengJeong;
 
 
-    //가야 <-> 서면
+    /**
+     * 가야 <-> 서면
+     */
 
     StationAndLength* GaYaToSeoMyeon  = (StationAndLength*)malloc(sizeof(StationAndLength)); //가야 -> 서면
     StationAndLength* SeoMyeonToGaYa = (StationAndLength*)malloc(sizeof(StationAndLength)); //서면 -> 가야
@@ -393,7 +413,9 @@ void init() {
     SeoMyeon-> stationAndLength[2] = SeoMyeonToGaYa;
 
 
-    //서면 <-> 문현
+    /**
+     * 서면 <-> 문현
+     */
     Station* MunHyeon = (Station*)malloc(sizeof(Station)); //문현 구조체
 
 
@@ -410,7 +432,9 @@ void init() {
     MunHyeonToSeoMyeon -> time = 8;
     MunHyeon -> stationAndLength[0] = MunHyeonToSeoMyeon;
 
-    //문현 <-> 대연
+    /**
+     * 문현 <-> 대연
+     */
     Station* DaeYeon = (Station*)malloc(sizeof(Station)); //대연 구조체
 
     StationAndLength* MunHyeonToDaeYeon  = (StationAndLength*)malloc(sizeof(StationAndLength)); //문현 -> 대연
@@ -427,7 +451,9 @@ void init() {
     DaeYeon-> stationAndLength[0] = DaeYeonToMunHyeon;
 
 
-    //대연 <-> 금련산
+    /**
+     * 대연 <-> 금련산
+     */
     Station* GeumLyeonSan = (Station*)malloc(sizeof(Station)); //금련산 구조체
 
     StationAndLength* DaeYeonToGeumLyeonSan = (StationAndLength*)malloc(sizeof(StationAndLength)); //대연 -> 금련산
@@ -445,9 +471,10 @@ void init() {
     GeumLyeonSanToDaeYeon -> time = 8;
     GeumLyeonSan -> stationAndLength[0] = GeumLyeonSanToDaeYeon;
 
-    //금련산 <-> 수영
 
-
+    /**
+     * 금련산 <-> 수영
+     */
     StationAndLength* GeumLyeonSanToSuYeong  = (StationAndLength*)malloc(sizeof(StationAndLength)); //금련산 ->  수영
     StationAndLength* SuYeongToGeumLyeonSan = (StationAndLength*)malloc(sizeof(StationAndLength)); //수영 -> 금련산
 
@@ -461,8 +488,4 @@ void init() {
     GeumLyeonSanToSuYeong -> station = SuYeong;
     GeumLyeonSanToSuYeong -> time = 8;
     GeumLyeonSan -> stationAndLength[1] = GeumLyeonSanToSuYeong;
-
-
-
-
 }
