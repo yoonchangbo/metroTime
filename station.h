@@ -521,8 +521,17 @@ void init() {
 }
 
 
+Station* findById(int id){
+    return Station_Array[id];
+}
 
-Station* findById(int i){
-    return Station_Array[i];
+
+int findIdByStation(Station* station){
+    for(int i = 0 ; i < NODE_COUNT ; i++){
+        if(Station_Array[i] == station){
+            return i;
+        }
+        return NULL;
+    }
 }
 
