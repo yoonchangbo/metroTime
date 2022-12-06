@@ -18,21 +18,16 @@ void makeShortestRouteTable(){
         //아이디로 역 찾기
         Station* foundStation = findById(i);
 
-        //찾은 역 이어진 곳 다 찾고 복사
-        struct StationAndLength* pLength[4];
-        strcpy(pLength, foundStation -> stationAndLength);
-
-
         //역 이어진 곳 찾아와서 거리 배열에 넣기
-        for(int j = 0 ; pLength[j] != NULL ; j++){
+        for(int j = 0 ; foundStation->stationAndLength[j] != NULL ; j++){
             
-            struct station *pStation = pLength[j]->station;
+            struct station *pStation = foundStation->stationAndLength[j]->station;
             int stationId = findIdByStation(pStation);
-            shortestRouteTable[i][stationId] = pLength[j] -> time;
+            shortestRouteTable[i][stationId] = foundStation->stationAndLength[j] -> time;
         }
     }
 }
 
-void TableInit(){
+void tableInit(){
     makeShortestRouteTable();
 }

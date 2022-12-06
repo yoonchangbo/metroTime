@@ -6,7 +6,6 @@
 #include <stdlib.h>
 
 
-
 #ifndef YOONCHANG_STATION_H
 #define YOONCHANG_STATION_H
 #endif // YOONCHANG_STATION_H
@@ -18,7 +17,7 @@ typedef int Time;
 typedef struct StationAndLength SaL;
 
 typedef struct Station{
-    struct StationAndLength* stationAndLength[4];
+    struct StationAndLength* stationAndLength[5];
 } Station;
 
 // 자기와 인접한 역과 그 역까지의 거리
@@ -30,7 +29,7 @@ typedef struct StationAndLength{
 
 Station* Station_Array[23];
 
-void init() {
+void stationInit() {
 
     /*-----------1호선----------*/
 
@@ -42,6 +41,7 @@ void init() {
     Station* DongLae = (Station*)malloc(sizeof(Station));  // 동래 구조체
     Station_Array[1]=DongLae;
 
+
     StationAndLength* BusanDaeToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); //부산대 -> 동래 가는 길
     StationAndLength* DongLaeToBusanDae = (StationAndLength*)malloc(sizeof(StationAndLength)); //동래 -> 부산대 가는 길
 
@@ -49,6 +49,7 @@ void init() {
     BusanDaeToDongLae->station = DongLae;
     BusanDaeToDongLae->time = 8;
     BusanDae->stationAndLength[0] = BusanDaeToDongLae;
+    BusanDae->stationAndLength[1] = NULL;
 
     //동래 -> 부산대
     DongLaeToBusanDae->station = BusanDae;
@@ -104,7 +105,8 @@ void init() {
     //양정 -> 서면
     YangJoengToSeoMyeon->station = SeoMyeon;
     YangJoengToSeoMyeon->time = 8;
-    YounSang->stationAndLength[1] = YounSanToYangJeong;
+    YangJeong->stationAndLength[1]=YangJoengToSeoMyeon;
+    YangJeong->stationAndLength[2] = NULL;
 
     //서면 -> 양정
     SeoMyeonToYangJeong->station = YangJeong;
@@ -128,7 +130,7 @@ void init() {
     //좌천 -> 서면
     JwaCheonToSeoMyeon->station = SeoMyeon;
     JwaCheonToSeoMyeon->time = 8;
-    JwaCheon->stationAndLength[0] = JwaCheon;
+    JwaCheon->stationAndLength[0] = JwaCheonToSeoMyeon;
 
     /**
      * 좌천 -> 부산역
@@ -142,10 +144,12 @@ void init() {
     JwaCheonToBusanYeog->station = BusanYeog;
     JwaCheonToBusanYeog->time = 8;
     JwaCheon->stationAndLength[1] = JwaCheonToBusanYeog;
+    JwaCheon->stationAndLength[2] = NULL;
 
     BusanYeogToJwaCheon->station = JwaCheon;
     BusanYeogToJwaCheon->time = 8;
     BusanYeog->stationAndLength[0] = BusanYeogToJwaCheon;
+    BusanYeog->stationAndLength[1] = NULL;
 
 
     /*-----------4호선----------*/
@@ -166,6 +170,7 @@ void init() {
     SeogDaeToSeoDong->station = SeoDong;
     SeogDaeToSeoDong->time = 8;
     SeogDae->stationAndLength[0] = SeogDaeToSeoDong;
+    SeogDae->stationAndLength[1] = NULL;
     //서동 -> 석대
     SeoDongToSeogDae->station = SeogDae;
     SeoDongToSeogDae->time = 8;
@@ -184,6 +189,7 @@ void init() {
     SeoDongToNagmin->station = Nagmin;
     SeoDongToNagmin->time = 8;
     SeoDong->stationAndLength[1] = SeoDongToNagmin;
+    SeoDong->stationAndLength[2] = NULL;
     //낙민 -> 석동
     NagminToSeoDong->station = SeoDong;
     NagminToSeoDong->time = 8;
@@ -199,6 +205,7 @@ void init() {
     NagminToDongLae->station = DongLae;
     NagminToDongLae->time = 8;
     Nagmin->stationAndLength[1] = NagminToDongLae;
+    Nagmin->stationAndLength[2] = NULL;
 
     //동래 -> 낙민
     DongLaeToNagmin->station = Nagmin;
@@ -218,11 +225,15 @@ void init() {
     DongLaeToMiNam->station = MiNam;
     DongLaeToMiNam->time = 4;
     DongLae->stationAndLength[3] = DongLaeToMiNam;
+    DongLae-> stationAndLength[4] = NULL;
 
     //미남 -> 동래
     MiNamToDongLae->station = DongLae;
     MiNamToDongLae->time = 4;
     DongLae->stationAndLength[0] = MiNamToDongLae;
+
+
+    /*-----------3호선----------*/
 
     /**
      * 덕천 <-> 남산정
@@ -256,6 +267,7 @@ void init() {
     NamsanJeongToMiNam->station = MiNam;
     NamsanJeongToMiNam->time = 4;
     NamsanJeong->stationAndLength[1] = NamsanJeongToMiNam;
+    NamsanJeong-> stationAndLength[2] = NULL;
     //미남 -> 남산정
     MiNamToNamsanJeong->station = DeogCheon;
     MiNamToNamsanJeong->time = 4;
@@ -272,6 +284,7 @@ void init() {
     MiNamToYounSang->station = YounSang;
     MiNamToYounSang->time = 4;
     MiNam->stationAndLength[2] = MiNamToYounSang;
+    MiNam-> stationAndLength[3] = NULL;
 
     //연산 -> 미남
     YoungSanToMiNam->station = MiNam;
@@ -292,6 +305,7 @@ void init() {
     YounSangToBaeSan->station = BaeSan;
     YounSangToBaeSan->time = 4;
     YounSang->stationAndLength[3] = YounSangToBaeSan;
+    YounSang-> stationAndLength[4] = NULL;
 
     //배산 -> 연산
     BaeSanToYounSang->station = YounSang;
@@ -312,6 +326,7 @@ void init() {
     BaeSanToSuYeong->station = SuYeong;
     BaeSanToSuYeong->time = 4;
     BaeSan->stationAndLength[1] = BaeSanToSuYeong;
+    BaeSan-> stationAndLength[2] = NULL;
 
     //수영 -> 배산
     SuYeongToBaeSan->station = BaeSan;
@@ -335,6 +350,7 @@ void init() {
     YulRiToDeogCheon -> station = DeogCheon;
     YulRiToDeogCheon -> time = 8;
     YulRi -> stationAndLength[0] = YulRiToDeogCheon;
+    YulRi-> stationAndLength[1] = NULL;
 
     //덕천 -> 율리
     DeogCheonToYulRi -> station = YulRi;
@@ -354,6 +370,7 @@ void init() {
     DeogCheonToMoRa -> station = MoRa;
     DeogCheonToMoRa -> time = 8;
     DeogCheon -> stationAndLength[2] = DeogCheonToMoRa;
+    DeogCheon-> stationAndLength[3] = NULL;
 
     //모라 -> 덕천
     MoRaToDeogCheon -> station = DeogCheon;
@@ -375,6 +392,7 @@ void init() {
     MoRaToSaSang -> station = SaSang;
     MoRaToSaSang-> time = 8;
     MoRa -> stationAndLength[1] = MoRaToSaSang;
+    MoRa-> stationAndLength[2] = NULL;
 
     //사상 -> 모라
     SaSangToMoRa -> station = MoRa;
@@ -396,6 +414,7 @@ void init() {
     SaSangToNaengJeong -> station = NaengJeong;
     SaSangToNaengJeong -> time = 8;
     SaSang -> stationAndLength[1] = SaSangToNaengJeong;
+    SaSang-> stationAndLength[2] = NULL;
 
     //냉정 -> 사상
     NaengJeongToSaSang -> station = SaSang;
@@ -416,6 +435,7 @@ void init() {
     NaengJeongToGaYa -> station = GaYa;
     NaengJeongToGaYa -> time = 8;
     NaengJeong-> stationAndLength[1] = NaengJeongToGaYa;
+    NaengJeong-> stationAndLength[2] = NULL;
 
     //가야 -> 냉정
     GaYaToNaengJeong -> station = NaengJeong;
@@ -434,6 +454,7 @@ void init() {
     GaYaToSeoMyeon -> station = SeoMyeon;
     GaYaToSeoMyeon -> time = 4;
     GaYa -> stationAndLength[1] = GaYaToSeoMyeon;
+    GaYa-> stationAndLength[2] = NULL;
 
     //서면 -> 가야
     SeoMyeonToGaYa-> station = GaYa;
@@ -454,6 +475,8 @@ void init() {
     SeoMyeonToMunHyeon-> station = MunHyeon;
     SeoMyeonToMunHyeon-> time = 8;
     SeoMyeon-> stationAndLength[3] = SeoMyeonToMunHyeon;
+    SeoMyeon-> stationAndLength[4] = NULL;
+
 
     //문현 -> 서면
     MunHyeonToSeoMyeon -> station = SeoMyeon;
@@ -473,6 +496,7 @@ void init() {
     MunHyeonToDaeYeon -> station = DaeYeon;
     MunHyeonToDaeYeon -> time = 8;
     MunHyeon -> stationAndLength[1] = MunHyeonToDaeYeon;
+    MunHyeon-> stationAndLength[2] = NULL;
 
     //대연 -> 문현
     DaeYeonToMunHyeon-> station = MunHyeon;
@@ -495,6 +519,7 @@ void init() {
     DaeYeonToGeumLyeonSan-> station = GeumLyeonSan;
     DaeYeonToGeumLyeonSan-> time = 8;
     DaeYeon-> stationAndLength[1] = DaeYeonToGeumLyeonSan;
+    DaeYeon-> stationAndLength[2] = NULL;
 
     //금련산 -> 대연
     GeumLyeonSanToDaeYeon -> station = DaeYeon;
@@ -513,13 +538,14 @@ void init() {
     SuYeongToGeumLyeonSan-> station = GeumLyeonSan;
     SuYeongToGeumLyeonSan-> time = 8;
     SuYeong-> stationAndLength[1] = SuYeongToGeumLyeonSan;
+    SuYeong-> stationAndLength[2] = NULL;
 
     //금련산 -> 수영
     GeumLyeonSanToSuYeong -> station = SuYeong;
     GeumLyeonSanToSuYeong -> time = 8;
     GeumLyeonSan -> stationAndLength[1] = GeumLyeonSanToSuYeong;
+    GeumLyeonSan -> stationAndLength[2] = NULL;
 }
-
 
 Station* findById(int id){
     return Station_Array[id];
@@ -531,7 +557,7 @@ int findIdByStation(Station* station){
         if(Station_Array[i] == station){
             return i;
         }
-        return NULL;
     }
+    return NULL;
 }
 
