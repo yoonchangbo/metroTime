@@ -27,7 +27,7 @@ typedef struct StationAndLength{
 } StationAndLength;
 
 
-char station_name_array[100][100] = {"BusanDae", "DongLae" , "YounSang", "YangJeong", "SeoMyeon", "JwaCheon", "BusanYeog",
+char station_name_array[100][100] = {"BusanDae", "DongLae" , "YounSan", "YangJeong", "SeoMyeon", "JwaCheon", "BusanYeog",
                                      "SeogDae", "SeoDong", "Nagmin", "MiNam", "DeogCheon", "NamsanJeong", "BaeSan",
                                      "SuYeong", "YulRi", "MoRa", "SaSang", "NaengJeong", "GaYa", "MunHyeon",
                                      "DaeYeon", "GeumLyeonSan"};
@@ -65,21 +65,21 @@ void stationInit() {
     /**
      * 동래 <-> 연산
      */
-    Station* YounSang = (Station*)malloc(sizeof(Station)); // 연산 구조체
-    Station_Array[2]=YounSang;
+    Station* YounSan = (Station*)malloc(sizeof(Station)); // 연산 구조체
+    Station_Array[2]=YounSan;
 
-    StationAndLength* DongLaeToYounSang = (StationAndLength*)malloc(sizeof(StationAndLength)); //동래 -> 영상
-    StationAndLength* YounSangToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); //연산 -> 동래
+    StationAndLength* DongLaeToYounSan = (StationAndLength*)malloc(sizeof(StationAndLength)); //동래 -> 영상
+    StationAndLength* YounSanToDongLae = (StationAndLength*)malloc(sizeof(StationAndLength)); //연산 -> 동래
 
     //동래 -> 연산
-    DongLaeToYounSang->station = YounSang;
-    DongLaeToYounSang->time = 8;
-    DongLae->stationAndLength[1] = DongLaeToYounSang;
+    DongLaeToYounSan->station = YounSan;
+    DongLaeToYounSan->time = 8;
+    DongLae->stationAndLength[1] = DongLaeToYounSan;
 
     // 연산 -> 동래
-    YounSangToDongLae->station = DongLae;
-    YounSangToDongLae->time = 8;
-    YounSang->stationAndLength[0] = YounSangToDongLae;
+    YounSanToDongLae->station = DongLae;
+    YounSanToDongLae->time = 8;
+    YounSan->stationAndLength[0] = YounSanToDongLae;
 
     /**
      * 연산 <-> 양정
@@ -93,9 +93,9 @@ void stationInit() {
     //연산 -> 양정
     YounSanToYangJeong->station = YangJeong;
     YounSanToYangJeong->time = 8;
-    YounSang->stationAndLength[1] = YounSanToYangJeong;
+    YounSan->stationAndLength[1] = YounSanToYangJeong;
 
-    YangJeongToYounSan->station = YounSang;
+    YangJeongToYounSan->station = YounSan;
     YangJeongToYounSan->time = 8;
     YangJeong->stationAndLength[0] = YangJeongToYounSan;
 
@@ -283,19 +283,19 @@ void stationInit() {
      * 미남 <-> 연산
      */
 
-    StationAndLength* MiNamToYounSang = (StationAndLength*)malloc(sizeof(StationAndLength)); // 미남 -> 연산
+    StationAndLength* MiNamToYounSan = (StationAndLength*)malloc(sizeof(StationAndLength)); // 미남 -> 연산
     StationAndLength* YoungSanToMiNam = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 미남
 
     //미남 -> 연산
-    MiNamToYounSang->station = YounSang;
-    MiNamToYounSang->time = 4;
-    MiNam->stationAndLength[2] = MiNamToYounSang;
+    MiNamToYounSan->station = YounSan;
+    MiNamToYounSan->time = 4;
+    MiNam->stationAndLength[2] = MiNamToYounSan;
     MiNam-> stationAndLength[3] = NULL;
 
     //연산 -> 미남
     YoungSanToMiNam->station = MiNam;
     YoungSanToMiNam->time = 4;
-    YounSang->stationAndLength[2] = YoungSanToMiNam;
+    YounSan->stationAndLength[2] = YoungSanToMiNam;
 
     /**
      * 연산 <-> 배산
@@ -304,19 +304,19 @@ void stationInit() {
     Station* BaeSan = (Station*)malloc(sizeof(Station)); // 배산 구조체
     Station_Array[13]=BaeSan;
 
-    StationAndLength* YounSangToBaeSan = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 배산
-    StationAndLength* BaeSanToYounSang = (StationAndLength*)malloc(sizeof(StationAndLength)); // 배산 -> 연산
+    StationAndLength* YounSanToBaeSan = (StationAndLength*)malloc(sizeof(StationAndLength)); // 연산 -> 배산
+    StationAndLength* BaeSanToYounSan = (StationAndLength*)malloc(sizeof(StationAndLength)); // 배산 -> 연산
 
     //연산 -> 배산
-    YounSangToBaeSan->station = BaeSan;
-    YounSangToBaeSan->time = 4;
-    YounSang->stationAndLength[3] = YounSangToBaeSan;
-    YounSang-> stationAndLength[4] = NULL;
+    YounSanToBaeSan->station = BaeSan;
+    YounSanToBaeSan->time = 4;
+    YounSan->stationAndLength[3] = YounSanToBaeSan;
+    YounSan-> stationAndLength[4] = NULL;
 
     //배산 -> 연산
-    BaeSanToYounSang->station = YounSang;
-    BaeSanToYounSang->time = 4;
-    BaeSan->stationAndLength[0] = BaeSanToYounSang;
+    BaeSanToYounSan->station = YounSan;
+    BaeSanToYounSan->time = 4;
+    BaeSan->stationAndLength[0] = BaeSanToYounSan;
 
 
     /**
