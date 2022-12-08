@@ -3,4 +3,4 @@ project(yoonchang C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(yoonchang main.c station.h shortestRouteTable.h findRouteAndTime.h)
+add_executable(yoonchang main.c station.h shortestRouteTable.h findRouteAndTime.h init.h)
