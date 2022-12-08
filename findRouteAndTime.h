@@ -27,35 +27,42 @@ int findShortestRoute(){
     return index;
 }
 
-int dijkstraLogic(int start){
-    isUsedBefore[start] = true; //전에 사용이 되었다!
+int dijkstraLogic(int startId){
+    isUsedBefore[startId] = true; //전에 사용이 되었다!
 
     for(int i = 0 ; i < NODE_COUNT ; i++){
-        distence[i] = shortestRouteTable[start][i];
+        distence[i] = shortestRouteTable[startId][i];
     }
-    isChecked[start] = true;
+    isChecked[startId] = true;
     for(int i = 0 ; i < NODE_COUNT -2 ; i++){
         int current = findShortestRoute();
         isChecked[current] = true;
         for(int j = 0 ; j < NODE_COUNT - 2; j++){
             if(!isChecked[j]){
-                if(distence[j] + shortestRouteTable[start][j] < distence[j]){
-                    distence[j] = distence[j] + shortestRouteTable[start][j];
+                if(distence[j] + shortestRouteTable[startId][j] < distence[j]){
+                    distence[j] = distence[j] + shortestRouteTable[startId][j];
                 }
             }
         }
     }
     //찾았던거 다시 최단경로로 넣어서 캐싱
     for(int i = 0 ; i < NODE_COUNT ; i++){
-        shortestRouteTable[start][i] = distence[i];
+        shortestRouteTable[startId][i] = distence[i];
     }
 }
 
+int dijnstraService(char start[100], char end[100]){
+    int startId = findStationIdByStationName(start);
+    int endId = findStationIdByStationName(end);
 
-int dijnstraService(int start, int end){
-    if(isUsedBefore[start]) return shortestRouteTable[start][end];
-    if(isUsedBefore[end]) return shortestRouteTable[start][end];
-    else dijkstraLogic(start);
+    if(startId == NULL || endId == NULL){
+        printf("있는 역을 말해주십시오!");
+        return 0;
+    }
 
-    return shortestRouteTable[start][end];
+    if(isUsedBefore[startId]) return shortestRouteTable[startId][endId];
+    if(isUsedBefore[endId]) return shortestRouteTable[startId][endId];
+    else dijkstraLogic(startId);
+
+    return shortestRouteTable[startId][endId];
 }

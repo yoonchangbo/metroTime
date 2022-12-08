@@ -26,7 +26,13 @@ typedef struct StationAndLength{
 } StationAndLength;
 
 
+char station_name_array[100][100] = {"BusanDae", "DongLae" , "YounSang", "YangJeong", "SeoMyeon", "JwaCheon", "BusanYeog",
+                                     "SeogDae", "SeoDong", "Nagmin", "MiNam", "DeogCheon", "NamsanJeong", "BaeSan",
+                                     "SuYeong", "YulRi", "MoRa", "SaSang", "NaengJeong", "GaYa", "MunHyeon",
+                                     "DaeYeon", "GeumLyeonSan"};
 Station* Station_Array[23];
+
+//char station_name_array[26][100] = {"BusanDae","DongLae", "YounSang", "YangJeong", "SeoMyeon", "JwaCheon", "BusanYeog", "SeogDae", ""};
 
 void stationInit() {
 
@@ -93,7 +99,7 @@ void stationInit() {
     YangJeong->stationAndLength[0] = YangJeongToYounSan;
 
     /**
-     * 양정 -> 서면
+     * 양정 <-> 서면
      */
     Station* SeoMyeon = (Station*)malloc(sizeof(Station)); //서면 구조체
     Station_Array[4]=SeoMyeon;
@@ -132,10 +138,10 @@ void stationInit() {
     JwaCheon->stationAndLength[0] = JwaCheon;
 
     /**
-     * 좌천 -> 부산역
+     * 좌천 <-> 부산역
      */
     Station* BusanYeog = (Station*)malloc(sizeof(Station)); // 부산역 구조체
-    Station_Array[6]=BusanDae;
+    Station_Array[6]=BusanYeog;
 
     StationAndLength* BusanYeogToJwaCheon = (StationAndLength*)malloc(sizeof(StationAndLength));
     StationAndLength* JwaCheonToBusanYeog = (StationAndLength*)malloc(sizeof(StationAndLength));
@@ -548,6 +554,15 @@ void stationInit() {
 
 Station* findById(int id){
     return Station_Array[id];
+}
+
+int findStationIdByStationName(char name[100]){
+    for(int i = 0 ; i < NODE_COUNT ; i++){
+        if(name == station_name_array){
+            return i;
+        }
+    }
+    return NULL;
 }
 
 
