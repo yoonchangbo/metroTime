@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #ifndef YOONCHANG_STATION_H
 #define YOONCHANG_STATION_H
@@ -30,9 +31,9 @@ char station_name_array[100][100] = {"BusanDae", "DongLae" , "YounSang", "YangJe
                                      "SeogDae", "SeoDong", "Nagmin", "MiNam", "DeogCheon", "NamsanJeong", "BaeSan",
                                      "SuYeong", "YulRi", "MoRa", "SaSang", "NaengJeong", "GaYa", "MunHyeon",
                                      "DaeYeon", "GeumLyeonSan"};
-Station* Station_Array[23];
 
-//char station_name_array[26][100] = {"BusanDae","DongLae", "YounSang", "YangJeong", "SeoMyeon", "JwaCheon", "BusanYeog", "SeogDae", ""};
+
+Station* Station_Array[23];
 
 void stationInit() {
 
@@ -135,7 +136,7 @@ void stationInit() {
     //좌천 -> 서면
     JwaCheonToSeoMyeon->station = SeoMyeon;
     JwaCheonToSeoMyeon->time = 8;
-    JwaCheon->stationAndLength[0] = JwaCheon;
+    JwaCheon->stationAndLength[0] = JwaCheonToSeoMyeon;
 
     /**
      * 좌천 <-> 부산역
@@ -179,7 +180,7 @@ void stationInit() {
     //서동 -> 석대
     SeoDongToSeogDae->station = SeogDae;
     SeoDongToSeogDae->time = 8;
-    SeogDae->stationAndLength[0] = SeoDongToSeogDae;
+    SeoDong->stationAndLength[0] = SeoDongToSeogDae;
 
     /**
      * 서동 -> 낙민
@@ -235,7 +236,7 @@ void stationInit() {
     //미남 -> 동래
     MiNamToDongLae->station = DongLae;
     MiNamToDongLae->time = 4;
-    DongLae->stationAndLength[0] = MiNamToDongLae;
+    MiNam->stationAndLength[0] = MiNamToDongLae;
 
 
     /*-----------3호선----------*/
@@ -556,13 +557,26 @@ Station* findById(int id){
     return Station_Array[id];
 }
 
+
+bool findBy(char name1[100], char name2[100]){
+
+    for(int i = 0 ;name1[i] != NULL && name2[i] != NULL ; i++){
+        if(name1[i] != name2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
 int findStationIdByStationName(char name[100]){
     for(int i = 0 ; i < NODE_COUNT ; i++){
-        if(name == station_name_array){
+        if(findBy(name, station_name_array[i])){
             return i;
         }
     }
-    return NULL;
+    return -1;
 }
 
 
@@ -574,4 +588,6 @@ int findIdByStation(Station* station){
     }
     return NULL;
 }
+
+
 

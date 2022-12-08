@@ -13,7 +13,17 @@
 int shortestRouteTable[30][30];
 int INF = 100000000;
 
+void initialTable(){
+    for(int i = 0 ; i < NODE_COUNT ; i++){
+        for(int j = 0 ; j < NODE_COUNT ; j++) {
+            if(i == j)
+                shortestRouteTable[i][j] == 0;
+            else shortestRouteTable[i][j] = INF;
+        }
+    }
+}
 void makeShortestRouteTable(){
+    initialTable();
     for(int i = 0 ; i < NODE_COUNT ; i++){
 
         //아이디로 역 찾기
