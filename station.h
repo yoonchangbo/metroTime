@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 #ifndef YOONCHANG_STATION_H
 #define YOONCHANG_STATION_H
 #endif // YOONCHANG_STATION_H
@@ -130,7 +129,7 @@ void stationInit() {
     //좌천 -> 서면
     JwaCheonToSeoMyeon->station = SeoMyeon;
     JwaCheonToSeoMyeon->time = 8;
-    JwaCheon->stationAndLength[0] = JwaCheonToSeoMyeon;
+    JwaCheon->stationAndLength[0] = JwaCheon;
 
     /**
      * 좌천 -> 부산역

@@ -11,6 +11,7 @@
 #endif //YOONCHANG_SHORTESTROUTETABLE_H
 
 int shortestRouteTable[30][30];
+int INF = 100000000;
 
 void makeShortestRouteTable(){
     for(int i = 0 ; i < NODE_COUNT ; i++){
