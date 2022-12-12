@@ -13,6 +13,8 @@ int distence[26]; // 다익스트라 알고리즘에서 경로별 최단거리 �
 bool isChecked[26]; // 다익스트라 알고리즘에서 노드가 체크되었는지 확인하는 배열
 bool isUsedBefore[26]; // 이 노드에서 예전에 출발 혹은 도착되는데 사용되었는지확인
 
+char routeTable[26][26][300];
+
 void initDijkstra(){
     for(int i = 0 ; i < NODE_COUNT ; i++){
         isChecked[i] = false;
@@ -66,7 +68,6 @@ int dijnstraService(char start[100], char end[100]){
     }
 
     if(isUsedBefore[startId]) return shortestRouteTable[startId][endId];
-    if(isUsedBefore[endId])   return shortestRouteTable[startId][endId];
     else dijkstraLogic(startId);
 
     return shortestRouteTable[startId][endId];
