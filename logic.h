@@ -10,15 +10,13 @@
 #endif //YOONCHANG_LOGIC_H
 
 
-int logic(){
-    while(1) {
+int logic() {
+    while (1) {
         printf("\n1 : 지하철역 보기\n2 : 최단경로 조회하기\n3 : 지금의 최단경로표 보기\n4 : 서비스 종료\n");
         int chooseNumber;
         printf("입력 : ");
         scanf("%d", &chooseNumber);
         switch (chooseNumber) {
-
-
             case 4:
                 return 0;
 
@@ -27,15 +25,18 @@ int logic(){
                     for (int j = 0; j < NODE_COUNT; j++)
                         printf("%d ", shortestRouteTable[i][j]);
                 continue;
+                break;
             }
 
             case 2: {
                 printf("역 두개를 입력해주세요\n");
                 printf("입력 : ");
                 scanf("%s %s", start, end);
+
                 int time = dijnstraService(start, end);
                 printf("%d분 걸립니다!", time);
                 continue;
+                break;
             }
 
             case 1: {
@@ -45,16 +46,25 @@ int logic(){
                 switch (chooseNumber) {
                     case 0:
                         printAll();
+                        break;
                     case 1:
                         print1Stations();
+                        break;
                     case 2:
                         print2Stations();
+                        break;
                     case 3:
                         print3Stations();
+                        break;
                     case 4:
                         print4Stations();
+                        break;
                 }
+                break;
             }
+            default:
+                printf("다시 입력해주십시오.\n");
+
         }
     }
 }

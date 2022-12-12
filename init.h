@@ -12,7 +12,8 @@
 char start[100];
 char end[100];
 
-void init(){
+void init() {
     stationInit();
     tableInit();
+    routeTableInit();
 }

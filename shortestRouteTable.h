@@ -34,6 +34,7 @@ void makeShortestRouteTable(){
             
             struct station *pStation = foundStation->stationAndLength[j]->station;
             int stationId = findIdByStation(pStation);
+            if(stationId == -1) return;
             shortestRouteTable[i][stationId] = foundStation->stationAndLength[j] -> time;
         }
     }
